@@ -29,14 +29,28 @@ var category = [];
 var lineData = [];
 //柱型Y轴
 var barData = [];
+// Y轴差值
+var dotted=[];
 
 // 装载X轴数据
 for(i in  list){
-    category.push(list[i][0])
+    category.push(list[i][0]);
 }
 
-// 装载线性Y轴数据
+// 装载线性Y轴数据（线性表示女性）
+for(i in list){
+    lineData.push(list[i][2]);
+}
 
+//装载柱型Y轴数据（柱型表示男性)
+for(i in list){
+    barData.push(list[i][1]);
+}
+
+//计算Y轴差值
+for(i in list){
+    dotted.push(Number(list[i][1])-Number(list[i][2]));
+}
 
 // option
 option = {
@@ -99,7 +113,7 @@ option = {
         },
         data: barData
     }, {
-        name: 'line',
+        name: 'bar',
         type: 'bar',
         barGap: '-100%',
         barWidth: 10,
