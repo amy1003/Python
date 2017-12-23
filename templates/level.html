@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>按人口等级划分</title>
+    <script type="text/javascript" src="/static/js/echarts.min.js"></script>
+    <style type="text/css">
+        #main{
+            position: relative;
+            left: 350px;
+            top: 150px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main" style="width: 800px;height:600px;"></div>
+</body>
+<script type="text/javascript">
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    //获取view传过来的数据
+    var list={{ list|safe }};
+
+    //获取数据
+    option = {
+    title: {
+        text: '日本人口地区分布雷达图'
+    },
+    tooltip: {},
+    legend: {
+        data: ['统计数据']
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius: 3,
+                padding: [3, 5]
+           }
+        },
+
+        indicator: [
+           { name: list[0][0], max: 5},
+           { name: list[1][0], max: 5},
+            { name: list[2][0], max: 5}
+        ]
+    },
+
+    series: [{
+        name: '人口',
+        type: 'radar',
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [list[0][1], list[1][1], list[2][1]],
+                name : '统计数据'
+            }
+        ]
+    }]
+};
+
+     // 使用刚指定的配置项和数据显示图表。
+     myChart.setOption(option);
+</script>
+</html>
