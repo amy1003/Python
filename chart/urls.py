@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'level/', views.chartLevel),
     url(r'gender/', views.chartGender),
+    url(r'addUser/', views.initAddUser),
+    url(r'saveUser$', views.saveUser),
 
 ]

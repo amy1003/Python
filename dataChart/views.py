@@ -1,4 +1,5 @@
 import json
+import random
 
 import psycopg2
 from django.shortcuts import render
@@ -55,3 +56,37 @@ def chartGender(request):
     c.close()
 
     return render(request,'gender.html',jsonStr)
+
+
+# 进入保存用户信息页面
+def initAddUser(request):
+
+    return render(request,'addUser.html',)
+
+
+# 保存表单数据
+def saveUser(request):
+    username=request.POST['username']
+    gender=request.POST.get('gender')
+    iq=random.randint(0,100)
+    eq=random.randint(0,100)
+    strength=random.randint(0,100)
+    speed=random.randint(0,100)
+    tenacious=random.randint(0,100)
+    c=conn()
+    cursor=c.cursor()
+    cursor.execute('insert into t_user(name,sex,iq,eq,strength,speed,tenacious) VALUES (%s,%s,%s,%s,%s,%s,%s)',
+                   (username,bool(gender),iq,eq,strength,speed,tenacious))
+
+    cursor.execute('select name,iq,eq,strength,speed,tenacious from t_user WHERE name=%s',(username,))
+
+    user=cursor.fetchone()
+    print(user)
+
+    c.commit()
+    c.close()
+
+    jsonStr=json.dumps(user)
+    users={'u':jsonStr}
+    return render(request,'show.html',users)
+
