@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        p{
+           position: relative;
+            top: 15px;
+           left: 1300px;
+            font-size: 25px;
+            font-family: 华文琥珀;
+            color: #737373;
+        }
+
+        *{
+            margin: 0px;
+        }
+        body{
+            background-color: #bce8f1;
+        }
+
+    </style>
+</head>
+<body>
+       <p>欢迎您:<span style="color: #286090;font-style: italic">{{ request.session.name }}</span>&nbsp;&nbsp;
+       <a href="logout">注销</a>
+       </p>
+</body>
+</html>

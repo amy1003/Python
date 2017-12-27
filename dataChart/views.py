@@ -5,8 +5,6 @@ import psycopg2
 from django.shortcuts import render
 
 # Create your views here.
-from dataChart.models import Poptbl
-
 
 def conn():
     c = psycopg2.connect(database="test", user="postgres", password="123456", host="127.0.0.1", port="5432")
@@ -89,4 +87,6 @@ def saveUser(request):
     jsonStr=json.dumps(user)
     users={'u':jsonStr}
     return render(request,'show.html',users)
+
+
 

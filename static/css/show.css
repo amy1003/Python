@@ -1,0 +1,33 @@
+ .container{
+          margin: 0px;
+          padding: 0px;
+          position: relative;
+          top: 20px;
+          left: 10px;
+          width: 99%;
+          height: 100%;
+      }
+
+        .tr{
+            height: 45px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #th{
+            height: 70px;
+            font-size: 30px;
+            font-family: 华文彩云;
+            color: #adadad;
+        }
+
+        .glyphicon-user{
+            color: #afd9ee;
+        }
+
+        .glyphicon-pencil{
+            color: lightgreen;
+        }
+
+        .glyphicon-trash{
+            color: red;
+        }

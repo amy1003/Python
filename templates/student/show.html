@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学员信息展示</title>
+    <script type="text/javascript" src="/static/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/show.js"></script>
+    <style type="text/css">
+        @import "/static/css/bootstrap.min.css";
+        @import "/static/css/show.css";
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: center" id="th">学员信息展示&nbsp;&nbsp;
+                    <button class="btn btn-info" id="class">班级统计</button>&nbsp;&nbsp;
+                    <button class="btn btn-info" id="academic">学历统计</button>
+                </div>
+                <table class="table">
+                    <tr class="tr">
+                        <td width="20%">Img</td>
+                        <td width="20%">姓名</td>
+                        <td width="20%">学历</td>
+                        <td width="20%">班级</td>
+                        <td width="15%">操作</td>
+                    </tr>
+                    {% for l in ds.list %}
+                        <tr class="tr">
+                            <td width="20%"><span class="glyphicon glyphicon-user"></span></td>
+                            <td width="20%">{{ l.0 }}</td>
+                            <td width="20%">{{ l.1 }}</td>
+                            <td width="20%">{{ l.2 }}</td>
+                            <td width="15%">
+                                <span class="glyphicon glyphicon-pencil" class="update"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-trash" class="delete"></span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5">
+                            <ul class="pager">
+                                <li><a href="query_student/1">首页</a><span>第{{ ds.page}}页</span></li>
+                                <li><a href="query_student/{{ ds.page|add:-1}}">上一页</a></li>
+                                <li><a href="query_student/{{ ds.page|add:1 }}">下一页</a><span>共{{ ds.last }}页</span> </li>
+                                <li><a href="query_student/{{ ds.last}}">尾页</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
